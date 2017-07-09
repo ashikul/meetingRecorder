@@ -34,7 +34,7 @@
 <ion-header>
   <ion-navbar [color]="isRecording ? 'danger' : 'primary'">
     <ion-title>
-      Listen to Me
+      Listen to Me 1.0
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -46,6 +46,7 @@
 
   <ion-card>
     <ion-card-header>This is what I understood...</ion-card-header>
+    {{matches}}
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let match of matches">
