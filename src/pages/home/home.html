@@ -1,40 +1,40 @@
 <!--<ion-header>-->
-    <!--<ion-navbar>-->
-        <!--<ion-title>-->
-            <!--Meeting Recorder App-->
-        <!--</ion-title>-->
-    <!--</ion-navbar>-->
+<!--<ion-navbar>-->
+<!--<ion-title>-->
+<!--Meeting Recorder App-->
+<!--</ion-title>-->
+<!--</ion-navbar>-->
 <!--</ion-header>-->
 
 <!--<ion-content padding>-->
 
-    <!--<div class="app-button-container">-->
-        <!--<button ion-button (click)="isSpeechSupported()">Is Speech Supported?</button>-->
-        <!--<button ion-button (click)="getPermission()">Get Permission</button>-->
-        <!--<button ion-button (click)="hasPermission()">Has Permission?</button>-->
-        <!--<button ion-button (click)="getSupportedLanguages()">Get Supported Languages</button>-->
-        <!--<button ion-button (click)="listenForSpeech()">Listen for Speech</button>-->
+<!--<div class="app-button-container">-->
+<!--<button ion-button (click)="isSpeechSupported()">Is Speech Supported?</button>-->
+<!--<button ion-button (click)="getPermission()">Get Permission</button>-->
+<!--<button ion-button (click)="hasPermission()">Has Permission?</button>-->
+<!--<button ion-button (click)="getSupportedLanguages()">Get Supported Languages</button>-->
+<!--<button ion-button (click)="listenForSpeech()">Listen for Speech</button>-->
 
-    <!--</div>-->
+<!--</div>-->
 
-    <!--<br>-->
+<!--<br>-->
 
-    <!--OutputTest-->
+<!--OutputTest-->
 
-        <!--<div *ngFor="let speech of speechList">-->
-            <!--<p>{{speech}}</p>-->
-        <!--</div>-->
+<!--<div *ngFor="let speech of speechList">-->
+<!--<p>{{speech}}</p>-->
+<!--</div>-->
 
 
-    <!--<div>-->
-        <!--{{speechList}}-->
-    <!--</div>-->
+<!--<div>-->
+<!--{{speechList}}-->
+<!--</div>-->
 
 <!--</ion-content>-->
 <ion-header>
   <ion-navbar [color]="isRecording ? 'danger' : 'primary'">
     <ion-title>
-      Listen to Me 1.0
+      Listen to Me
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -46,7 +46,6 @@
 
   <ion-card>
     <ion-card-header>This is what I understood...</ion-card-header>
-    {{matches}}
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let match of matches">
