@@ -7,6 +7,7 @@ import  {SpeechRecognition} from '@ionic-native/speech-recognition';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
+import { Media } from '@ionic-native/media';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,7 @@ import {HomePage} from '../pages/home/home';
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -26,6 +27,7 @@ import {HomePage} from '../pages/home/home';
         StatusBar,
         SplashScreen,
         SpeechRecognition,
+        Media,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
 
     ]

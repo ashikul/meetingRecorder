@@ -8,6 +8,9 @@ import {
 import {Platform} from 'ionic-angular';
 
 import {AlertController} from 'ionic-angular';
+import {Media, MediaObject} from '@ionic-native/media';
+
+// import { MediaPlugin } from 'ionic-native';
 // import {Observable} from'rxjs/Observable';
 
 @Component({
@@ -20,10 +23,88 @@ export class HomePage {
     speechList: Array<string> = [];
     androidOptions: SpeechRecognitionListeningOptionsAndroid;
     iosOptions: SpeechRecognitionListeningOptionsIOS;
+    mediaPlugin: MediaObject = null;
+    recorded: boolean;
+    file;
 
-    constructor(public navCtrl: NavController, private platform: Platform, private speech: SpeechRecognition, private alertCtrl: AlertController) {
 
+    constructor(public navCtrl: NavController, private platform: Platform, private speech: SpeechRecognition, private alertCtrl: AlertController,
+                private media: Media) {
+        this.recorded = false;
+        this.file = this.media.create('file.mp3');
     }
+
+    // get MediaPlugin(): MediaObject {
+    //     if (this.mediaPlugin == null) {
+    //         this.mediaPlugin = new MediaObject('recording.wav');
+    //     }
+    //
+    //
+    //     // const file: MediaObject = this.media.create('path/to/file.mp3');
+    //
+    //     return this.mediaPlugin;
+    // }
+
+    startRecording() {
+        try {
+            // this.MediaPlugin.startRecord();
+            this.file.startRecord();
+        }
+        catch (e) {
+            this.showAlert('Error: ' + e);
+        }
+    }
+
+    stopRecording() {
+        try {
+            // this.MediaPlugin.stopRecord();
+            this.file.stopRecord();
+            this.recorded = true;
+        }
+        catch (e) {
+            this.showAlert('Error: ' + e);
+        }
+    }
+
+    playRecording() {
+        try {
+            this.file.play();
+        }
+        catch (e) {
+            this.showAlert('Error: ' + e);
+        }
+    }
+
+    stopRecordingPlay() {
+        try {
+            this.file.stop();
+        }
+        catch (e) {
+            this.showAlert('Error: ' + e);
+        }
+    }
+
+    showAlert(message) {
+        let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: message,
+            buttons: ['OK']
+        });
+        alert.present();
+    }
+
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
 
 
     async isSpeechSupported(): Promise<boolean> {
