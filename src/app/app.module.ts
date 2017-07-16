@@ -11,6 +11,8 @@ import { Media } from '@ionic-native/media';
 import { Base64 } from '@ionic-native/base64';
 import { File } from '@ionic-native/file';
 import { HttpModule} from '@angular/http';
+import { Clipboard } from '@ionic-native/clipboard';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -33,6 +35,7 @@ import { HttpModule} from '@angular/http';
         Media,
         Base64,
         File,
+        Clipboard,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
 
     ]

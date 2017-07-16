@@ -59,9 +59,14 @@
        Google API  Recording
     </button>
 
-    <div>
-        {{encodedAudio.substring(0, 10)}}
+    <div class="encoded">
+        encoded audio
+        <!--{{encodedAudio.substring(0, 10)}}-->
+        <ion-input   placeholder="encodedbase64" [value]="encodedAudio" [(ngModel)]="encodedAudio"></ion-input>
+
+
     </div>
+
 
     <div>
         <li *ngFor="let obj of APIdata">{{obj | json}}</li>

@@ -18,7 +18,7 @@ import 'rxjs/add/operator/toPromise';
 // import { MediaPlugin } from 'ionic-native';
 // import {Observable} from'rxjs/Observable';
 import {File} from '@ionic-native/file';
-
+import { Clipboard } from '@ionic-native/clipboard';
 
 @Component({
     selector: 'page-home',
@@ -38,7 +38,7 @@ export class HomePage {
     fileSWA;
     posts;
     speechText;
-    encodedAudio= '';
+    encodedAudio = '';
     readDATAURL;
     directory;
     directory1;
@@ -50,7 +50,7 @@ export class HomePage {
 
 
     constructor(public navCtrl: NavController, private platform: Platform, private speech: SpeechRecognition, private alertCtrl: AlertController,
-                private media: Media, private base64: Base64, public http: Http, public fileHelper: File) {
+                private media: Media, private base64: Base64, public http: Http, public fileHelper: File, public clipboard: Clipboard) {
         this.recorded = false;
         this.recording = false;
         this.file = this.media.create('recording1.flac');
@@ -64,8 +64,9 @@ export class HomePage {
         // console.log(btoa('shwa.flac'));
 
         // console.log('CONSTRCUTOR');
-        console.log(this.file);
-        console.log(this.fileSWA);
+        console.log('APP STARTED');
+        // console.log(this.file);
+        // console.log(this.fileSWA);
 
         this.path = 'file:///';
         this.pathDirectory = '';
@@ -91,7 +92,6 @@ export class HomePage {
         //             this.readDATAURL = response;
         //             this.showAlert('readAsDataURL: ' + response);
         //         }).catch(err =>  this.showAlert('readAsDataURL:error ' + err));
-
 
 
         // file:///android_asset/
@@ -202,11 +202,28 @@ export class HomePage {
         }
 
         this.base64.encodeFile(url).then((base64File: string) => {
-            console.log(base64File);
+            // console.log(base64File);
 
-            this.encodedAudio = base64File.split(",")[1];
-            this.showAlert('encoding---: ' + this.encodedAudio + ' --- ' + base64File.split(",")[0] );
-            if (this.encodedAudio){
+            this.encodedAudio = base64File.split(",")[1].replace(/\r?\n|\r/g, "");;
+            // this.showAlert('encoding---: ' + this.encodedAudio.substring(0, 10) + ' --- ' + base64File.split(",")[0]);
+
+            console.log('ENCODEDE');
+            console.log('ENCODEDE');
+            console.log('ENCODEDE');
+            console.log('ENCODEDE');
+            console.log('ENCODEDE');
+            console.log(this.encodedAudio);
+            
+            // this.clipboard.copy(this.encodedAudio).then(
+            //     (resolve: string) => {
+            //         alert(resolve);
+            //     },
+            //     (reject: string) => {
+            //         alert('Error: ' + reject);
+            //     }
+            // );
+            
+            if (true) {
                 let headers = new Headers(
                     {
                         'Content-Type': 'application/json'
@@ -224,45 +241,41 @@ export class HomePage {
                     }
                 });
 
+                //this is empty.
                 this.APIdata = data;
+                console.log('APIData');
+                console.log(this.APIdata);
 
+                //this isnt working
                 this.http.post('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyAgYh1VIHlcV6CdI5acPtliWVNclTr14Xc', data, options)
-                    .map(res => res.json()).subscribe(data => {
+                    .map(res => res.json()).subscribe(response => {
 
                     console.log('YOOOOOOO');
-                    this.showAlert('Google Speech API Response: ' + data);
+                    this.showAlert('Google Speech API Response: ' + response);
 
-                    this.APIresponse = data;
+                    this.APIresponse = response;
 
-                    if (data.results) {
+                    if (response.results) {
                         //TODO: check for normal response
 
-                        if (data.results[0].alternatives) {
-                            if (data.results[0].alternatives[0].transcript) {
-                                this.speechText = data.results[0].alternatives[0].transcript;
+                        if (response.results[0].alternatives) {
+                            if (response.results[0].alternatives[0].transcript) {
+                                this.speechText = response.results[0].alternatives[0].transcript;
                             }
                         }
-
                     } else {
                         this.speechText = 'NOTHING RECOGNIZED';
                     }
-
-                    console.log(data);
+                    console.log(response);
                     // this.posts = data.data.children;
                 });
-
-
-
             }
-
-
         }, (err) => {
             this.showAlert('Base64 Error: ' + err);
             console.log(err);
         });
 
     }
-
 
     startRecording() {
         try {
