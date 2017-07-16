@@ -38,13 +38,15 @@ export class HomePage {
     fileSWA;
     posts;
     speechText;
-    encodedAudio;
+    encodedAudio= '';
     readDATAURL;
     directory;
     directory1;
     directory2;
     path;
     pathDirectory;
+    APIresponse;
+    APIdata;
 
 
     constructor(public navCtrl: NavController, private platform: Platform, private speech: SpeechRecognition, private alertCtrl: AlertController,
@@ -74,8 +76,6 @@ export class HomePage {
         //             this.directory = response;
         //             this.showAlert('listDir: ' + response);
         //         }).catch(err => this.showAlert('listDir:error ' + err));
-
-
         //
         // fileHelper.getFreeDiskSpace()
         //     .then(
@@ -83,12 +83,16 @@ export class HomePage {
         //             this.showAlert('diskspace: ' + response)
         //         }).catch(err => this.showAlert('getFreeDiskSpace:error ' + err));
 
-        fileHelper.readAsDataURL('file:///sdcard/', 'shwa.flac')
-            .then(
-                response => {
-                    this.readDATAURL = response;
-                    this.showAlert('readAsDataURL: ' + response);
-                }).catch(err =>  this.showAlert('readAsDataURL:error ' + err));
+
+        //this work, but is different, and needs string split. 2nd
+        // fileHelper.readAsDataURL('file:///sdcard/', 'shwa.flac')
+        //     .then(
+        //         response => {
+        //             this.readDATAURL = response;
+        //             this.showAlert('readAsDataURL: ' + response);
+        //         }).catch(err =>  this.showAlert('readAsDataURL:error ' + err));
+
+
 
         // file:///android_asset/
         // has images, pak files, www, webkit, sounds
@@ -199,48 +203,57 @@ export class HomePage {
 
         this.base64.encodeFile(url).then((base64File: string) => {
             console.log(base64File);
-            this.showAlert('encoding..: ' + base64File);
-            this.encodedAudio = base64File;
 
-            let headers = new Headers(
-                {
-                    'Content-Type': 'application/json'
+            this.encodedAudio = base64File.split(",")[1];
+            this.showAlert('encoding---: ' + this.encodedAudio + ' --- ' + base64File.split(",")[0] );
+            if (this.encodedAudio){
+                let headers = new Headers(
+                    {
+                        'Content-Type': 'application/json'
+                    });
+                let options = new RequestOptions({headers: headers});
+
+                let data = JSON.stringify({
+                    "config": {
+                        "encoding": "FLAC",
+                        "sampleRateHertz": 16000,
+                        "languageCode": "en-US"
+                    },
+                    "audio": {
+                        "content": this.encodedAudio
+                    }
                 });
-            let options = new RequestOptions({headers: headers});
 
-            let data = JSON.stringify({
-                "config": {
-                    "encoding": "FLAC",
-                    "sampleRateHertz": 16000,
-                    "languageCode": "en-US"
-                },
-                "audio": {
-                    "content": this.encodedAudio
-                }
-            });
+                this.APIdata = data;
 
-            this.http.post('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyAgYh1VIHlcV6CdI5acPtliWVNclTr14Xc', data, options)
-                .map(res => res.json()).subscribe(data => {
+                this.http.post('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyAgYh1VIHlcV6CdI5acPtliWVNclTr14Xc', data, options)
+                    .map(res => res.json()).subscribe(data => {
 
-                console.log('YOOOOOOO');
-                this.showAlert('Response..: ' + data);
+                    console.log('YOOOOOOO');
+                    this.showAlert('Google Speech API Response: ' + data);
 
-                if (data.results) {
-                    //TODO: check for normal response
+                    this.APIresponse = data;
 
-                    if (data.results[0].alternatives) {
-                        if (data.results[0].alternatives[0].transcript) {
-                            this.speechText = data.results[0].alternatives[0].transcript
+                    if (data.results) {
+                        //TODO: check for normal response
+
+                        if (data.results[0].alternatives) {
+                            if (data.results[0].alternatives[0].transcript) {
+                                this.speechText = data.results[0].alternatives[0].transcript;
+                            }
                         }
+
+                    } else {
+                        this.speechText = 'NOTHING RECOGNIZED';
                     }
 
-                } else {
-                    this.speechText = 'NOTHING RECOGNIZED'
-                }
+                    console.log(data);
+                    // this.posts = data.data.children;
+                });
 
-                console.log(data);
-                // this.posts = data.data.children;
-            });
+
+
+            }
 
 
         }, (err) => {
@@ -276,7 +289,7 @@ export class HomePage {
 
     playRecording() {
         try {
-            this.fileSWA.play();
+            this.file.play();
         }
         catch (e) {
             this.showAlert('Error: ' + e);
@@ -285,7 +298,7 @@ export class HomePage {
 
     playRecordingSWA() {
         try {
-            this.file.play();
+            this.fileSWA.play();
         }
         catch (e) {
             this.showAlert('Error: ' + e);

@@ -39,6 +39,8 @@
 
 
     {{readDATAURL}}
+
+
     <li *ngFor="let obj of readDATAURL">{{obj | json}}</li>
 
     <!--<ion-list>-->
@@ -56,35 +58,50 @@
     <button ion-button (click)="googleAPI(false)">
        Google API  Recording
     </button>
-    {{encodedAudio}}
+
+    <div>
+        {{encodedAudio.substring(0, 10)}}
+    </div>
+
+    <div>
+        <li *ngFor="let obj of APIdata">{{obj | json}}</li>
+    </div>
+
+    <div>
+        <li *ngFor="let obj of APIresponse">{{obj | json}}</li>
+    </div>
+
     <div>
         {{speechText}}
     </div>
 
-    <ion-input placeholder="path" [value]="path" [(ngModel)]="path"></ion-input>
-    <ion-input placeholder="directory" [value]="pathDirectory" [(ngModel)]="pathDirectory"></ion-input>
-    <button ion-button (click)="listDir()">
-        ListDir
-    </button>
+    <!--<ion-input placeholder="path" [value]="path" [(ngModel)]="path"></ion-input>-->
+    <!--<ion-input placeholder="directory" [value]="pathDirectory" [(ngModel)]="pathDirectory"></ion-input>-->
+    <!--<button ion-button (click)="listDir()">-->
+        <!--ListDir-->
+    <!--</button>-->
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <!--<br>-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--<br>-->
 
-    <div>
-        1
-    </div>
-    <li *ngFor="let obj of directory">{{obj.nativeURL | json}}</li>
-    <div>
-        2
-    </div>
-    <li *ngFor="let obj of directory1">{{obj.nativeURL | json}}</li>
-    <div>
-        3
-    </div>
-    <li *ngFor="let obj of directory2">{{obj.nativeURL | json}}</li>
+    <!--<div>-->
+        <!--1-->
+    <!--</div>-->
+    <!--<li *ngFor="let obj of directory">{{obj.nativeURL | json}}</li>-->
+    <!--<div>-->
+        <!--2-->
+    <!--</div>-->
+    <!--<li *ngFor="let obj of directory1">{{obj.nativeURL | json}}</li>-->
+    <!--<div>-->
+        <!--3-->
+    <!--</div>-->
+    <!--<li *ngFor="let obj of directory2">{{obj.nativeURL | json}}</li>-->
+
+
+
 <!--{{directory}}-->
 <!--{{directory1}}-->
 <!--{{directory2}}-->
