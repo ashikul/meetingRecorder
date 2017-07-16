@@ -11,6 +11,7 @@
     <allow-navigation href="http://192.168.0.12:8100" />
     <allow-navigation href="http://10.6.153.166:8101" />
     <allow-navigation href="http://10.6.153.166:8100" />
+    <allow-navigation href="http://10.6.153.132:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -90,8 +91,10 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.4.0" />
+    <plugin name="com-badrit-base64" spec="^0.2.0" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
     <plugin name="cordova-plugin-media" spec="^3.0.1">
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value=" " />
     </plugin>

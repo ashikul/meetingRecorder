@@ -8,7 +8,9 @@ import  {SpeechRecognition} from '@ionic-native/speech-recognition';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import { Media } from '@ionic-native/media';
-
+import { Base64 } from '@ionic-native/base64';
+import { File } from '@ionic-native/file';
+import { HttpModule} from '@angular/http';
 @NgModule({
     declarations: [
         MyApp,
@@ -17,6 +19,7 @@ import { Media } from '@ionic-native/media';
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
+        HttpModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -28,6 +31,8 @@ import { Media } from '@ionic-native/media';
         SplashScreen,
         SpeechRecognition,
         Media,
+        Base64,
+        File,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
 
     ]

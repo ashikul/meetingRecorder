@@ -19,6 +19,10 @@
         Stop recording
     </button>
 
+    <div *ngIf="recording">
+        Recording
+    </div>
+
     <div *ngIf="recorded">
         <button ion-button (click)="playRecording()">
             Start playback
@@ -30,11 +34,61 @@
 
 
     <br>
+    TEST
+    <br>
+
+
+    {{readDATAURL}}
+    <li *ngFor="let obj of readDATAURL">{{obj | json}}</li>
+
+    <!--<ion-list>-->
+        <!--<ion-item *ngFor="let post of posts">-->
+            <!--<img [src]="post.data.url" />-->
+        <!--</ion-item>-->
+    <!--</ion-list>-->
+
+    <button ion-button (click)="playRecordingSWA()">
+       Play Shwa File
+    </button>
+    <button ion-button (click)="googleAPI(true)">
+       Google API  Shwa File
+    </button>
+    <button ion-button (click)="googleAPI(false)">
+       Google API  Recording
+    </button>
+    {{encodedAudio}}
+    <div>
+        {{speechText}}
+    </div>
+
+    <ion-input placeholder="path" [value]="path" [(ngModel)]="path"></ion-input>
+    <ion-input placeholder="directory" [value]="pathDirectory" [(ngModel)]="pathDirectory"></ion-input>
+    <button ion-button (click)="listDir()">
+        ListDir
+    </button>
+
+    <br>
     <br>
     <br>
     <br>
     <br>
 
+    <div>
+        1
+    </div>
+    <li *ngFor="let obj of directory">{{obj.nativeURL | json}}</li>
+    <div>
+        2
+    </div>
+    <li *ngFor="let obj of directory1">{{obj.nativeURL | json}}</li>
+    <div>
+        3
+    </div>
+    <li *ngFor="let obj of directory2">{{obj.nativeURL | json}}</li>
+<!--{{directory}}-->
+<!--{{directory1}}-->
+<!--{{directory2}}-->
+    <!--<li *ngFor="let obj of directory2">{{obj | json}}</li>-->
 
     <div class="app-button-container">
         <button ion-button (click)="isSpeechSupported()">Is Speech Supported?</button>
