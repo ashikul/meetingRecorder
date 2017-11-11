@@ -18,7 +18,7 @@ import 'rxjs/add/operator/toPromise';
 // import { MediaPlugin } from 'ionic-native';
 // import {Observable} from'rxjs/Observable';
 import {File} from '@ionic-native/file';
-import { Clipboard } from '@ionic-native/clipboard';
+import {Clipboard} from '@ionic-native/clipboard';
 
 @Component({
     selector: 'page-home',
@@ -53,7 +53,7 @@ export class HomePage {
                 private media: Media, private base64: Base64, public http: Http, public fileHelper: File, public clipboard: Clipboard) {
         this.recorded = false;
         this.recording = false;
-        this.file = this.media.create('recording1.flac');
+        this.file = this.media.create('recording3.flac');
         this.fileSWA = this.media.create('shwa.flac');
 // this.directory = cordova.file.applicationStorageDirectory;
 // this.directory1 = cordova.file.applicationDirectory;
@@ -198,13 +198,14 @@ export class HomePage {
         if (debug) {
             url = 'file:///sdcard/shwa.flac';
         } else {
-            url = 'file:///sdcard/recording1.flac';
+            url = 'file:///sdcard/recording3.flac';
         }
 
         this.base64.encodeFile(url).then((base64File: string) => {
             // console.log(base64File);
 
-            this.encodedAudio = base64File.split(",")[1].replace(/\r?\n|\r/g, "");;
+            this.encodedAudio = base64File.split(",")[1].replace(/\r?\n|\r/g, "");
+            ;
             // this.showAlert('encoding---: ' + this.encodedAudio.substring(0, 10) + ' --- ' + base64File.split(",")[0]);
 
             console.log('ENCODEDE');
@@ -212,8 +213,8 @@ export class HomePage {
             console.log('ENCODEDE');
             console.log('ENCODEDE');
             console.log('ENCODEDE');
-            console.log(this.encodedAudio);
-            
+            // console.log(this.encodedAudio);
+
             // this.clipboard.copy(this.encodedAudio).then(
             //     (resolve: string) => {
             //         alert(resolve);
@@ -222,7 +223,8 @@ export class HomePage {
             //         alert('Error: ' + reject);
             //     }
             // );
-            
+
+
             if (true) {
                 let headers = new Headers(
                     {
@@ -262,6 +264,8 @@ export class HomePage {
                             if (response.results[0].alternatives[0].transcript) {
                                 this.speechText = response.results[0].alternatives[0].transcript;
                             }
+
+
                         }
                     } else {
                         this.speechText = 'NOTHING RECOGNIZED';
@@ -321,6 +325,15 @@ export class HomePage {
     stopRecordingPlay() {
         try {
             this.file.stop();
+        }
+        catch (e) {
+            this.showAlert('Error: ' + e);
+        }
+    }
+
+    release() {
+        try {
+            this.file.release();
         }
         catch (e) {
             this.showAlert('Error: ' + e);

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "meetingrecorder-173800",
+  "private_key_id": "b67d160c69989902a109d1d9e73b0e35e6cb24fd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2RpRkE31EsMK5\ngIaJiQ1+XbF8ZiXDRAGJywtEHm9ePEpJjTFy+RP0a7NPJe/F9MefbzxO9G8ZbOY2\nZN3fWB+4THLqNbEYkAkpyWzMoUQ26PPwklkxzjgiNCAl73zHIk0G+v96Z5LIsRI4\nUzNByPXDXb5gFTl2Fhj71jMaR464b5m1XekuA8Ea3KK9D8S4ROrEDgUKyxFRM8sx\ny6LL7CB/urrEkeeLzR97uUy6H9B3cgRuG2kLgfds9KDggzcShs5wnqrnvt9Npie/\nmw/194OnMEJcHLScPGNkzh31udaL5uwXGRSg3QlSI3pnEI/Dj1/3BLTWqVoCYZHq\nv50cYWfFAgMBAAECggEAKHgCITf8g4A1M4dYF3gg0VIPAl4Re0mBh+zXKwAQ3NzI\n54ycEnk/l3BEBsoW8p32pizFuIfnlL8LW79ITXqczEfY6awTDi+IgUkRyVrysLhG\n1L5BZF/zMZDeJF4IF5RDgs2+ZBhTzBAYSf4a7rul6QLKrj14HQIp+NvlS6vggY0Q\nzaDngJX3l+50W0VPz9z7rSKu6/Wi+iWt7574nydql3D4PGLz8SLFUS0NbGCPFexL\npr34/p+I6ISU2nfPkyniSqZEjo7ruGwg4ncgbe77M7p7Rmx3uESujPNAzghA6ofH\n5jS68NbPAD5zfGW+65jI1tH2q667uVgBGJAe5RM+nwKBgQD25hib2MDFH3vqvnx3\nDt9fUZuUDNaPN6LWGdz+z/HdYT3BVztHIFBzxYuBr9xw6hNwm0GBqEJ3kDN5LaJZ\n/U1LenSmCEHDTjykNWiIDHnHsVqGFA0R6QvdIhrcX6wySPgCfe42XhUWV/VRVyZb\nZn4kX/cIeDVI3HuRo284sCmfNwKBgQC8/qf+JKH2OMMXBh7HDDdlLaGHyotyhjbv\nz14nu+Zis+B7d1QR2t7GcA1JYhMa5HGYWni4RQDtHFbLHmjNVjndPnuZKo2vzEl2\nDW4YzjjgzFhjP84mBoQXANLFa8YtF86hAZE+mFO1hVcP6hM6WSYpbmo8JwsIds8K\nx+vujsmW4wKBgHkhcGddk03i4W/M3tGmmU5xgkvDdKy1Fg3GiJb3PGlpYNvvSSTf\nJLl37LbGqfc30CvJ7/yFqX5xX9+O1P0jef2S6ZHfsSv5wWSq00sUG9cuGwR25+am\nmGx4ZAdEZP4SsKLAV9OSmvPoWXH7uNTU1wRPlKoyF6pUicdtEI8WVoVHAoGAaRUS\npP0LTJLc7jVJ8ZR6THhlotHcXQ4BB69+A4u3GlQ3UY7UoKTYTu9Ig+/S/ZXdDz/m\ndVZwoGWsYH2E+f6iZ8BxCoWdiAyHH+txtrsa5urXjj+QyJXA5eVgS8KTysi868qq\nTmp1yKzd7oxQqpWc4VZyHQX8XXVpwu3L4bVkos8CgYBVkWm/DBLLxrwS1XWgy6/h\nNFaN8PmiDj3nXjc69ztFieoaWuVKu9U90myids6JuL/k84ZpwzWsoWOfpZcSNalE\nEKiOdeHDnUXRSZ8adafB3aGOZONe68Xlje3cVZhJtwekyukVue6MnRFUUhZkkTgb\ns1I5Oe05TIsuAdAoDJjgag==\n-----END PRIVATE KEY-----\n",
+  "client_email": "speechrecognitionapp@meetingrecorder-173800.iam.gserviceaccount.com",
+  "client_id": "113725071447574696515",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/speechrecognitionapp%40meetingrecorder-173800.iam.gserviceaccount.com"
+}

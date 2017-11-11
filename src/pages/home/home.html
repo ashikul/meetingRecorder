@@ -30,6 +30,9 @@
         <button ion-button (click)="stopRecordingPlay()">
             Stop playback
         </button>
+        <button ion-button (click)="release()">
+            Release
+        </button>
     </div>
 
 
@@ -59,22 +62,22 @@
        Google API  Recording
     </button>
 
-    <div class="encoded">
-        encoded audio
-        <!--{{encodedAudio.substring(0, 10)}}-->
-        <ion-input   placeholder="encodedbase64" [value]="encodedAudio" [(ngModel)]="encodedAudio"></ion-input>
+    <!--<div class="encoded">-->
+        <!--encoded audio-->
+        <!--&lt;!&ndash;{{encodedAudio.substring(0, 10)}}&ndash;&gt;-->
+        <!--<ion-input   placeholder="encodedbase64" [value]="encodedAudio" [(ngModel)]="encodedAudio"></ion-input>-->
 
 
-    </div>
+    <!--</div>-->
 
 
-    <div>
-        <li *ngFor="let obj of APIdata">{{obj | json}}</li>
-    </div>
+    <!--<div>-->
+        <!--<li *ngFor="let obj of APIdata">{{obj | json}}</li>-->
+    <!--</div>-->
 
-    <div>
-        <li *ngFor="let obj of APIresponse">{{obj | json}}</li>
-    </div>
+    <!--<div>-->
+        <!--<li *ngFor="let obj of APIresponse">{{obj | json}}</li>-->
+    <!--</div>-->
 
     <div>
         {{speechText}}
@@ -112,6 +115,8 @@
 <!--{{directory2}}-->
     <!--<li *ngFor="let obj of directory2">{{obj | json}}</li>-->
 
+
+    <div style="display: none">
     <div class="app-button-container">
         <button ion-button (click)="isSpeechSupported()">Is Speech Supported?</button>
         <button ion-button (click)="getPermission()">Get Permission</button>
@@ -128,7 +133,7 @@
     <div *ngFor="let speech of speechList">
         <p>{{speech}}</p>
     </div>
-
+    </div>
 
     <!--<div>-->
     <!--{{speechList}}-->
